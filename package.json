@@ -5,10 +5,13 @@
   "dependencies": {
     "@blueprintjs/core": "^3.9.0",
     "@blueprintjs/icons": "^3.3.0",
+    "@reach/router": "^1.2.1",
+    "classnames": "^2.2.6",
     "firebase": "^5.5.9",
     "flow-bin": "^0.86.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-firebaseui": "^3.1.2",
     "react-scripts": "2.1.1"
   },
   "scripts": {
@@ -25,5 +28,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "node-sass": "^4.10.0"
+  }
 }

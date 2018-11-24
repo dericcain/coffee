@@ -4,7 +4,7 @@ import { initializeApp } from 'firebase';
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
-import App from './App';
+import App from './app';
 import * as serviceWorker from './serviceWorker';
 
 initializeApp({
