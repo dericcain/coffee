@@ -3,21 +3,26 @@ import { auth, User } from 'firebase';
 
 import { Provider } from './context';
 import Pages from './pages';
+import Loader from './components/loader';
 
 interface IState {
   isAuthed: boolean;
   user: User;
+  isLoading: boolean;
 }
 
 class App extends React.Component<null, IState> {
   state = {
     isAuthed: false,
     user: null,
+    isLoading: true,
   }
 
   stopWatchingAuthChanges;
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.auth = auth();
     this.stopWatchingAuthChanges = this.watchAuth();
   }
 
@@ -26,17 +31,18 @@ class App extends React.Component<null, IState> {
   }
 
   watchAuth() {
-    return auth().onAuthStateChanged(user => {
-      console.debug('Auth state changed...');
+    return this.auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({
           user,
           isAuthed: true,
+          isLoading: false,
         });
       } else {
         this.setState({
           user: null,
           isAuthed: false,
+          isLoading: false,
         });
       }
     })
@@ -44,7 +50,7 @@ class App extends React.Component<null, IState> {
 
   logout = async () => {
     try {
-      await auth().signOut();
+      await this.auth.signOut();
       this.setState({ user: null, isAuthed: false });
     } catch (e) {
       throw new Error(e);
@@ -52,15 +58,16 @@ class App extends React.Component<null, IState> {
   }
 
   render() {
-    const { user, isAuthed } = this.state;
+    const { user, isAuthed, isLoading } = this.state;
 
     return (
       <Provider value={{
         isAuthed,
         user,
+        auth: this.auth,
         logout: this.logout,
       }}>
-        <Pages />
+        {isLoading ? <Loader /> : <Pages />}
       </Provider>
     );
   }

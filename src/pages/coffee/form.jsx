@@ -44,7 +44,7 @@ const AddCoffeeForm = ({
           <InputGroup id="brand" name="brand" placeholder="JavaPresse" onChange={onInputChange} value={brand} />
         </FormGroup>
         <FormGroup
-          label="What type"
+          label="What specific type of coffee?"
           labelFor="type"
           labelInfo="(required)"
         >

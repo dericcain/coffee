@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const CoffeeList = ({ coffee, isFetching }: IProps) => (
-  <HTMLTable striped style={{ width: '100%' }}>
+  <HTMLTable style={{ width: '100%' }} striped condensed>
     <thead>
     <tr>
       <th className={cx({ [Classes.SKELETON]: isFetching })}>Brand</th>

@@ -1,5 +1,4 @@
-// @flow
-import * as firebase from 'firebase';
+import { firestore } from 'firebase';
 
 const COFFEE = 'coffee';
 
@@ -10,8 +9,9 @@ export interface Coffee {
   rating: number;
 }
 
-export default () => {
-  const db = firebase.firestore();
+export default (userId: string) => {
+  const db = firestore();
+
   db.settings({
     timestampsInSnapshots: true,
   });
@@ -21,7 +21,7 @@ export default () => {
   const getCoffee = async () => {
     try {
       const coffee = [];
-      const q = await coffeeCollection.get();
+      const q = await coffeeCollection.where('userId', '==', userId).get();
       q.forEach(doc => {
         coffee.push({
           id: doc.id,
@@ -36,7 +36,7 @@ export default () => {
 
   const addCoffee = async (coffee: Coffee) => {
     try {
-      return coffeeCollection.add(coffee);
+      return coffeeCollection.add({ ...coffee, userId });
     } catch (e) {
       throw new Error(e);
     }

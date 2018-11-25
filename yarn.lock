@@ -761,6 +761,14 @@
     classnames "^2.2"
     tslib "^1.9.0"
 
+"@blueprintjs/select@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@blueprintjs/select/-/select-3.3.0.tgz#e5ff961a846a9e90ca627b58912bda5058518941"
+  dependencies:
+    "@blueprintjs/core" "^3.9.0"
+    classnames "^2.2"
+    tslib "^1.9.0"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
