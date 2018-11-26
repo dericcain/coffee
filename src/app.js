@@ -16,7 +16,7 @@ class App extends React.Component<null, IState> {
     isAuthed: false,
     user: null,
     isLoading: true,
-  }
+  };
 
   stopWatchingAuthChanges;
 
@@ -45,7 +45,7 @@ class App extends React.Component<null, IState> {
           isLoading: false,
         });
       }
-    })
+    });
   }
 
   logout = async () => {
@@ -55,18 +55,19 @@ class App extends React.Component<null, IState> {
     } catch (e) {
       throw new Error(e);
     }
-  }
+  };
 
   render() {
     const { user, isAuthed, isLoading } = this.state;
 
     return (
-      <Provider value={{
-        isAuthed,
-        user,
-        auth: this.auth,
-        logout: this.logout,
-      }}>
+      <Provider
+        value={{
+          isAuthed,
+          user,
+          auth: this.auth,
+          logout: this.logout,
+        }}>
         {isLoading ? <Loader /> : <Pages />}
       </Provider>
     );
